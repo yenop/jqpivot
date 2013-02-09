@@ -1019,8 +1019,6 @@
 
 				}
 
-				// remove floating header
-				$td.find('.jqpivot-floatingheader').remove();
 				// remove "calculating" label and print result table
 				$td.find('.jqpivot-calculating').remove();
 				if ($oldTable.length !== 0)
@@ -1117,7 +1115,7 @@
 							.append(
 								$('<span />', {
 									'class': 'jqpivot-menu',
-									text: '(' + func + ')'
+									text: func
 								})
 							);
 					});
@@ -1290,7 +1288,7 @@
 					calculatePivotTable($this);
 				}
 
-				$this.find('.jqpivot-d').disableSelection();
+				// $this.find('.jqpivot-d').disableSelection();
 
 				// activate jqueryui sortable on facts dimensions
 				$data.sortable({ // === $this.find('.jqpivot-data').sortable({
