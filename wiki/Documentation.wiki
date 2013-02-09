@@ -1,0 +1,99 @@
+#summary usage documentation
+
+= Options =
+
+== data ==
+
+*required*<br>
+*type*: array | object | function | string
+
+Data to use.<br>
+If array of objects - this array will be used as data.<br>
+If object - this object should contains array of objects inside. Plugin will try to find first array and use it as data.<br>
+If function - this function should return array of object or object with array of objects.<br>
+If string - it will be used as URL, plugin will make ajax request and will expext JSON array of objects or JSON object with array of objects.
+
+== columns ==
+
+*type*: array<br>
+
+Initial column set, by names.
+{{{
+columns: ['name']
+}}}
+
+== rows ==
+
+*type*: array<br>
+
+Initial row set, by names.
+{{{
+rows: ['city', 'year']
+}}}
+
+== dimensions ==
+
+*type*: object
+
+Settings for dimensions: type, filter, sort order, sort index. There is no need to set all settings.
+{{{
+dimensions: {
+  'id': {
+    type: 'number',
+    sort: 'desc',
+    filter: {
+      value: [20,undefined] // means >=20
+    }
+  },
+  'city': {
+    type: 'string',
+    sortIndex: 1, // this will be firts in all dimensions list
+    filter: {
+      value: 'rome', // means contains 'rome' substring, case insensitive
+      _exact: { // you can set exact values
+        'Paris': 1,
+        'Berlin': 1
+      }
+    }
+  },
+  'date': {
+    type: 'date',
+    filter: {
+      value: [undefined, '21/10/2013'] // means <= '21/10/2013', values will cast to Date
+    }
+  }  
+}
+}}}
+By default, plugin takes first object from data, get all fields from it and tries to recognize types.
+
+== facts ==
+
+*type*: array
+
+Initial data set.
+{{{
+facts: [{
+  by: 'price',
+  func: 'sum'
+}]
+}}}
+
+== sorter ==
+
+*type*: function
+
+Sorter function, can be defined instead of (or with) dimensions 'sortIndex'.
+
+== defaultFunc ==
+
+*type*: string<br>
+*default*: 'count'
+
+The name of default aggregation function.
+
+== showZeros ==
+
+*type*: boolean<br>
+*default*: false
+
+Show zeros inside table or not.
