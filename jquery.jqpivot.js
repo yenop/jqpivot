@@ -1019,8 +1019,6 @@
 
 				}
 
-				// remove floating header
-				$td.find('.jqpivot-floatingheader').remove();
 				// remove "calculating" label and print result table
 				$td.find('.jqpivot-calculating').remove();
 				if ($oldTable.length !== 0)
