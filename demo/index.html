@@ -1,0 +1,65 @@
+<!doctype html>
+
+<html>
+<head>
+ <link rel="stylesheet" href="css/jquery-ui.css" />
+ <link rel="stylesheet" href="css/jquery.jqpivot.css" />
+ <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
+ <script src="js/jquery-ui-1.10.0.min.js" type="text/javascript"></script>
+ <script src="js/jquery.stickytableheaders.js" type="text/javascript"></script>
+ <script src="js/jquery.jqpivot.js" type="text/javascript"></script>
+ <script type="text/javascript">
+$(function() {
+
+	$('#jqpivot').jqpivot({
+		data: 'data/simple.json',
+		dimensions: {
+			'id': {
+				sortIndex: 1,
+				type: 'number'
+			},
+			'product': {
+				sortIndex: 2
+			},
+			'city': {
+				sort: 'desc',
+				filter: {
+					_exact: {
+						'London': 1,
+						'Austin': 1
+					}
+				}
+			},
+			'quantity': {
+				filter: {
+					value: [1000, undefined]
+				}
+			},
+			'month': {
+				sortIndex: 100,
+				filter: {
+					value: [undefined, 6]
+				}
+			}
+		},
+		columns: ['year', 'month'],
+		rows: ['city', 'product'],
+		facts: [{
+			by: 'quantity',
+			func: 'sum'
+		},{
+			by: 'person',
+			func: 'uniqcount'
+		}]
+	});
+
+});
+ </script>
+
+</head>
+<body>
+
+<div id="jqpivot"></div>
+
+</body>
+</html>

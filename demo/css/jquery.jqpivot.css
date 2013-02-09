@@ -1,0 +1,274 @@
+.jqpivot-d {
+	position: relative;
+	padding: 2px 0;
+	margin-bottom: 3px;
+	white-space: nowrap;
+}
+.jqpivot-d > span {
+	border: 1px solid;
+	border-color: #ddd #555 #555 #ddd;
+	background-color: #f0f0f0;
+	padding: 1px 2px;
+}
+
+.jqpivot-d.ui-sortable-placeholder {
+	visibility: visible !important;
+	background-repeat: no-repeat;
+}
+
+.jqpivot-floatfix {
+	display: none;
+	float: left;
+}
+
+.jqpivot-menu {
+	padding: 0 2px 0 4px;
+	color: #666;
+	cursor: pointer;
+}
+.jqpivot-menu:hover {
+	color: #c66;
+}
+.jqpivot-menu-changed {
+	color: #66f;
+}
+
+.jqpivot-d > div.jqpivot-submenu {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #ddd #555 #555 #ddd;
+	background-color: #f0f0f0;
+	text-align: left;
+	padding: 0 4px 4px 4px;
+	position: absolute;
+	z-index: 1;
+	display: none;
+}
+.jqpivot-d > .jqpivot-submenu-border-fix {
+	position: absolute;
+	z-index: 2;
+	height: 1px;
+	right: 0;
+	border-right: 1px solid #555;
+	background-color: #f0f0f0;
+}
+
+.jqpivot-d > div.jqpivot-submenu .jqpivot-submenu-function {
+	cursor: pointer;
+}
+.jqpivot-d > div.jqpivot-submenu .jqpivot-submenu-function:hover span {
+	color: #c66;
+}
+
+.jqpivot-d > div.jqpivot-submenu hr {
+	margin: 4px 0;
+	border: 0;
+	height: 1px;
+	color: #aaa;
+	background-color: #aaa;
+}
+.jqpivot-d > div.jqpivot-submenu table {
+	border-collapse: collapse;
+}
+.jqpivot-d > div.jqpivot-submenu td:nth-child(1) {
+	text-align: right;
+	padding: 0 4px;
+}
+.jqpivot-d > div.jqpivot-submenu .jqpivot-datefilter,
+.jqpivot-d > div.jqpivot-submenu .jqpivot-numberfilter {
+	width: 100px;
+}
+.jqpivot-d > div.jqpivot-submenu .jqpivot-stringfilter {
+	width: 200px;
+}
+.jqpivot-d > div.jqpivot-submenu .jqpivot-filters-allvalues {
+	margin-top: 4px;
+}
+.jqpivot-d > div.jqpivot-submenu .jqpivot-filters-header {
+	cursor: pointer;
+	font-size: 0.8em;
+	line-height: 0.9em;
+	height: 0.9em;
+	background-color: #dadada;
+	text-align: center;
+}
+.jqpivot-d > div.jqpivot-submenu .jqpivot-filters-header:hover {
+	background-color: #e99;
+}
+.jqpivot-d > div.jqpivot-submenu .jqpivot-filters-values {
+	background-color: white;
+	border: solid #dadada;
+	border-width: 0 1px 1px 1px;
+	padding: 4px 4px 4px 0;
+	max-height: 200px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	display: none;
+}
+.jqpivot-d > div.jqpivot-submenu .jqpivot-filters-buttons {
+	margin-top: 4px;
+	text-align: right;
+}
+
+.jqpivot-wrapper {
+	border-collapse: collapse;
+}
+
+.jqpivot-dimensions {
+	border: solid #777;
+	border-width: 0 2px 2px 0;
+	vertical-align: bottom;
+	padding: 0 4px 0 15px;
+}
+.jqpivot-dimensions.jqpivot-trash {
+	background-repeat: no-repeat;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAKCAYAAABmBXS+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjEwMPRyoQAAAERJREFUKFNjUFFSYYBiJSD9HwmD+GA5EIEsgZUNMwUvDZPEZxrYOpiVRlCr0WnSFQVBTUKnUUwiShEux8NNwhVeYI8BAIakV3LFy4cLAAAAAElFTkSuQmCC);
+}
+.jqpivot-columns {
+	border: solid #eee;
+	border-width: 0 0 2px 0;
+	vertical-align: bottom;
+	padding: 0 0 0 4px;
+	max-width: 600px;
+	min-width: 50px;
+}
+.jqpivot-columns .jqpivot-d {
+	margin-right: 3px;
+	float: left;
+}
+.jqpivot-columns .jqpivot-d.ui-sortable-placeholder {
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAECAYAAABCxiV9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjEwMPRyoQAAACpJREFUGFdjUFFSYYBiCSD9H4hBNFgMXQIkCVcAkoTpgEnAFYAk0QXhfAAyhRwZN4G+ngAAAABJRU5ErkJggg==);
+	background-position: center bottom;
+}
+
+.jqpivot-rows {
+	border: solid #eee;
+	border-width: 0 2px 0 0;
+	vertical-align: top;
+	padding: 4px 4px 0 0;
+}
+.jqpivot-rows .jqpivot-d.ui-sortable-placeholder {
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAHCAYAAAAvZezQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjEwMPRyoQAAACdJREFUGFdjUFFSYYBiCSD9H4UDEwDLwDBIBZyDUwVIFVwbzFC4IABOuRwZ7JYbCQAAAABJRU5ErkJggg==);
+	background-position: right center;
+}
+.jqpivot-table {
+	position: relative;
+	display: block;
+	vertical-align: top;
+	padding: 4px 0 0 4px;
+}
+.jqpivot-data .jqpivot-d {
+	margin-right: 3px;
+	float: left;
+}
+.jqpivot-data .jqpivot-d.ui-sortable-placeholder {
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAECAYAAABCxiV9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjEwMPRyoQAAACRJREFUGFdjUFFS+Y8LMwAlJHBISoAksSkAaWCASSIrAEuAMABkDxwZUR9q+AAAAABJRU5ErkJggg==);
+	background-position: center top;
+}
+.jqpivot-data {
+	min-height: 27px;
+	max-width: 600px;
+}
+
+.jqpivot-calculating {}
+.jqpivot-calculating-table {
+	position: absolute;
+	text-align: center;
+	background-color: #dbdbdb;
+	background-color: rgba(204, 204, 204, 0.6);
+}
+.jqpivot-calculating > span {
+	background-color: #dbdbdb;
+	padding: 0 3px;
+	border: 1px solid;
+	border-color: #ddd #999 #999 #ddd;
+}
+.jqpivot-calculating-table > span {
+	background-color: #ccc;
+}
+
+.jqpivot-table table {
+	border-collapse: collapse;
+}
+.jqpivot-table th,
+.jqpivot-table td {
+	padding: 0 4px;
+	border: 1px solid #aaa;
+	min-width: 30px;
+	text-align: center;
+}
+.jqpivot-table .jqpivot-td-data {
+	text-align: right;
+	cursor: pointer;
+}
+.jqpivot-table .jqpivot-td-data:hover {
+	background-color: #eef;
+}
+
+.jqpivot-table .jqpivot-td-empty {
+	border: 0;
+}
+.jqpivot-table .jqpivot-td-bold {
+	color: #555;
+	font-weight: bold;
+	vertical-align: middle;
+}
+.jqpivot-table .jqpivot-td-coleven {
+	background-color: #f0f0f0;
+}
+.jqpivot-table .jqpivot-td-roweven {
+	background-color: #dadada;
+}
+.jqpivot-table .jqpivot-td-cheader {}
+.jqpivot-table .jqpivot-td-rheader {
+	text-align: right;
+}
+.jqpivot-table .jqpivot-td-cheader-bottom {
+	border-bottom: 2px solid #777;
+}
+.jqpivot-table .jqpivot-td-rheader-right {
+	border-right: 2px solid #777;
+}
+.jqpivot-table .jqpivot-td-rheader-top {
+	border-top: 2px solid #777;
+}
+.jqpivot-table .jqpivot-td-cheader.jqpivot-td-total {
+	border-left: 2px solid #777;
+}
+.jqpivot-table .jqpivot-td-cheader.jqpivot-td-rheader.jqpivot-td-total {
+	background-color: inherit;
+}
+
+.jqpivot-table .jqpivot-td-details {
+	background-color: #66f !important;
+}
+
+.jqpivot-details {
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+.jqpivot-details th,
+.jqpivot-details td {
+	border: 1px solid #aaa;
+	padding: 0 4px;
+	min-width: 30px;
+}
+.jqpivot-details th {
+	background-color: #dadada;
+}
+.jqpivot-details tr:nth-child(odd) {
+	background-color: #f0f0f0;
+}
+.jqpivot-details .jqpivot-td-type-number {
+	text-align: right;
+}
+.jqpivot-details th {
+	color: #555;
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+.tableFloatingHeader {
+	background-color: white;
+	padding-left: 2px;
+}
