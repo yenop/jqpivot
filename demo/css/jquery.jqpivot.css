@@ -22,7 +22,9 @@
 }
 
 .jqpivot-menu {
-	padding: 0 2px 0 4px;
+	margin-left: 4px;
+	border-left: 1px solid #bbb;
+	padding: 0 2px 0 2px;
 	color: #666;
 	cursor: pointer;
 }

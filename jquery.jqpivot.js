@@ -1115,7 +1115,7 @@
 							.append(
 								$('<span />', {
 									'class': 'jqpivot-menu',
-									text: '(' + func + ')'
+									text: func
 								})
 							);
 					});
@@ -1288,7 +1288,7 @@
 					calculatePivotTable($this);
 				}
 
-				$this.find('.jqpivot-d').disableSelection();
+				// $this.find('.jqpivot-d').disableSelection();
 
 				// activate jqueryui sortable on facts dimensions
 				$data.sortable({ // === $this.find('.jqpivot-data').sortable({
