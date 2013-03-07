@@ -39,10 +39,16 @@
 	$.extend({
 		jqpivot: new
 		function() {
-			
+
 			// default settings, can be overwritten
 			this.defaults = {
 				data: undefined, // url string to json data file, or array with data, or function which returns data array
+				listeners: {
+				//	start: function() {},
+				//	hidedetails: function() {},
+				// 	showdetails: function($detailstable) {},
+				// 	ready: function($pivottable) {},
+				},
 				// dimensions
 				//	e.g. {
 				//		'asd': {
@@ -145,6 +151,18 @@
 			};
 
 			// *** private functions ***
+
+			function rise(me, ev) {
+				var jqpivot = me.data('jqpivot');
+				if (!$.isEmptyObject(jqpivot.config.listeners)) {
+					if (jqpivot.config.listeners.hasOwnProperty(ev) && $.isFunction(jqpivot.config.listeners[ev])) {
+						var args = Array.prototype.slice.call(arguments, 2);
+						window.setTimeout(function() {
+							jqpivot.config.listeners[ev].apply(me, args);
+						}, 1);
+					}
+				}
+			}
 
 			/**
 			 * load data
@@ -558,16 +576,27 @@
 						});
 				}
 				$td.append($calculating);
-				
+
+				// rise 'start' event
+				rise($this, 'start');
+
 				// remove details table
-				$this.find('> table.jqpivot-details').remove();
+				var removed = $this.find('> table.jqpivot-details').remove();
 				$this.find('.jqpivot-td-details').removeClass('jqpivot-td-details');
+
+				// rise 'hidedetails' event
+				if (removed.length !== 0)
+					rise($this, 'hidedetails');
 
 				// table cell click event listener
 				function tableCellClickEventListener() {
 					// remove details table
-					$this.find('> table.jqpivot-details').remove();
+					var removed = $this.find('> table.jqpivot-details').remove();
 					$this.find('.jqpivot-td-details').removeClass('jqpivot-td-details');
+
+					// rise 'hidedetails' event
+					if (removed.length !== 0)
+						rise($this, 'hidedetails', $table);
 
 					var $me = $(this),
 					    data = $me.data('data');
@@ -614,6 +643,9 @@
 					// add new floating header
 					if ($().stickyTableHeaders)
 						$table.stickyTableHeaders();
+
+					// rise 'showdetails' event
+					rise($this, 'showdetails', $table);
 
 				}
 
@@ -708,7 +740,7 @@
 					// calculate data functions on each array
 					// and also fill columns and rows arrays
 					(function() {
-						
+
 						// get full path and divide it to columns/rows arrays
 						function slicePath(path) {
 							if (columnsCount > 0)
@@ -1025,10 +1057,13 @@
 					$oldTable.replaceWith($table);
 				else
 					$td.append($table);
-				
+
 				// add new floating header
 				if ($().stickyTableHeaders)
 					$table.stickyTableHeaders();
+
+				// if 'onready' callback is set -> call it
+				rise($this, 'ready', $table);
 
 				}, 100);
 			}
@@ -1220,7 +1255,7 @@
 						    dcarr = $columns.sortable('toArray', { attribute: 'data-name' }).filter(notEmpty),
 						    drarr = $rows.sortable('toArray', { attribute: 'data-name' }).filter(notEmpty),
 						    ischanged = false;
-						
+
 						if (!isDimensionsEqual(d.columns, dcarr)) {
 							ischanged = true;
 							d.columns = dcarr;
@@ -1537,7 +1572,7 @@
 							// clear filter by this dimension
 							delete dimension.filter.value;
 							delete dimension.filter._exact;
-							
+
 							// set filter by this dimension
 							if (this.value === 'set') {
 								$menu.find('input')
@@ -1753,7 +1788,7 @@
 					return this.each(function() {
 						var $this = $(this),
 						    jqpivot = $this.data('jqpivot');
-						
+
 						// if plugin is not initialized on this element - do nothing
 						if (!jqpivot)
 							return;
@@ -1775,9 +1810,9 @@
 			};
 		}
 	});
-	
+
 	$.fn.extend({
 		jqpivot: $.jqpivot.construct
 	});
-	
+
 })(jQuery, window);
