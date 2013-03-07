@@ -97,3 +97,19 @@ The name of default aggregation function.
 *default*: false
 
 Show zeros inside table or not.
+
+== listeners ==
+
+*type*: object with functions<br>
+
+Event listeners, may be following:
+
+  * *start*: function() { ... }<br>before pivot table calculating started
+
+  * *hidedetails*: function() { ... }<br>after hide details table
+
+  * *showdetails*: function($detailstable) { ... }<br>after show details table
+
+  * *ready*: function($pivottable) { ... }<br>after pivot table is calculated
+
+Inside listeners *this* statement points to jQuery object, where plugin is initialized.
