@@ -666,7 +666,8 @@
 				    aColumns = [], aRows = [],
 				    data = {},
 				    dname, dvalue, pdata, o,
-				    i, j, z;
+				    i, j, z,
+				    success = true;
 
 				function getFactIndex(name) {
 					if (name in factsIndexes)
@@ -680,12 +681,21 @@
 					return -1;
 				}
 
-				if (axes.length === 0) {
-					$table.append('<tr><td class="jqpivot-td-empty">Columns and Rows dimensions are empty</td></tr>');
-				} else
-				if (factsCount === 0) {
-					$table.append('<tr><td class="jqpivot-td-empty">Data dimensions are empty</td></tr>');
-				} else {
+				calculation: {
+
+					// columns and Rows dimensions are empty!
+					if (axes.length === 0) {
+						$table.append('<tr><td class="jqpivot-td-empty">Columns and Rows dimensions are empty</td></tr>');
+						success = false;
+						break calculation;
+					}
+
+					// data dimensions are empty!
+					if (factsCount === 0) {
+						$table.append('<tr><td class="jqpivot-td-empty">Data dimensions are empty</td></tr>');
+						success = false;
+						break calculation;
+					}
 
 					// go through all data array and place objects to arrays by needed dimensions
 					object:
@@ -804,6 +814,13 @@
 						traverse(data, []);
 						uniqColumnsRows();
 					})();
+
+					// there is no data for this filters!
+					if (aRows.length === 0) {
+						$table.append('<tr><td class="jqpivot-td-empty">There is no data to show in table</td></tr>');
+						success = false;
+						break calculation;
+					}
 
 					// sort columns and rows
 					(function() {
@@ -1049,7 +1066,7 @@
 							$me.remove();
 					});
 
-				}
+				} // 'calculation' block
 
 				// remove "calculating" label and print result table
 				$td.find('.jqpivot-calculating').remove();
@@ -1059,11 +1076,12 @@
 					$td.append($table);
 
 				// add new floating header
-				if ($().stickyTableHeaders)
+				if (success && $().stickyTableHeaders)
 					$table.stickyTableHeaders();
 
 				// if 'onready' callback is set -> call it
-				rise($this, 'ready', $table);
+				if (success)
+					rise($this, 'ready', $table);
 
 				}, 100);
 			}
